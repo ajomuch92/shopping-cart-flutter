@@ -1,10 +1,10 @@
 class Product {
   int? id, quantity;
-  String? name, description, color, urlPhoto, size;
+  String? name, color, urlPhoto, size;
   double? price;
   bool? isAdded;
 
-  Product({this.id, this.quantity, this.name, this.description, this.color, this.urlPhoto, this.price, this.isAdded});
+  Product({this.id, this.quantity, this.name, this.color, this.urlPhoto, this.price, this.isAdded});
 
   @override
   String toString() {
@@ -12,6 +12,6 @@ class Product {
   }
 
   String toDescription() {
-    return '${this.description} - ${this.color}';
+    return '${this.size} - ${this.color}';
   }
 }

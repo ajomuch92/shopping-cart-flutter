@@ -18,6 +18,8 @@ List<Product> getRandomProductList({int numberOfItems = 100}) {
     _product.urlPhoto = _urls[_randomItemIndex];
     _product.color = _colors[_randomColorIndex];
     _product.size = _sizes[_randomSizeIndex];
+    _product.isAdded = false;
+    _product.quantity = 0;
     list.add(_product);
   }
   return list;
