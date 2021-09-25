@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_cart_flutter/models/Product.dart';
 
 class Cart extends StatefulWidget {
   Cart({Key? key}) : super(key: key);
@@ -8,14 +9,31 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  List<Product> _products = [];
+
+  void _fillProducts(BuildContext context) {
+    List<Product> _allProducts = ModalRoute.of(context)!.settings.arguments as List<Product>;
+    setState(() {
+      _products = _allProducts.where((element) => element.isAdded!).toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _fillProducts(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
       ),
-      body: Center(
-        child: Text('Cart'),
+      body: ListView.builder(
+        itemCount: _products.length,
+        itemBuilder: (context, index) {
+          Product _product = _products[index];
+          return ListTile(
+            title: Text(_product.name!),
+            subtitle: Text(_product.toDescription()),
+          );
+        }
       ),
     );
   }
