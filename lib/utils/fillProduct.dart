@@ -20,6 +20,7 @@ List<Product> getRandomProductList({int numberOfItems = 100}) {
     _product.size = _sizes[_randomSizeIndex];
     _product.isAdded = false;
     _product.quantity = 0;
+    _product.id = i + 1;
     list.add(_product);
   }
   return list;
