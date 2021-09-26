@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SumRestItemQuantity extends StatefulWidget {
+class SumRestItemQuantity extends StatelessWidget {
   final int? quantity;
-  SumRestItemQuantity({Key? key, this.quantity}) : super(key: key);
-
-  @override
-  _SumRestItemQuantityState createState() => _SumRestItemQuantityState(quantity: this.quantity);
-}
-
-class _SumRestItemQuantityState extends State<SumRestItemQuantity> {
-  int? quantity;
-
-  _SumRestItemQuantityState({this.quantity});
+  final Function onPlusTap;
+  final Function onMinusTap;
+  const SumRestItemQuantity({Key? key, this.quantity, required this.onMinusTap, required this.onPlusTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +14,7 @@ class _SumRestItemQuantityState extends State<SumRestItemQuantity> {
         children: [
           ElevatedButton(
             onPressed: () {
-              if(quantity! > 1)
-                setState(() {
-                  quantity = quantity! - 1;
-                });
+              onMinusTap();
             },
             child: Icon(Icons.remove),
             style: ElevatedButton.styleFrom(
@@ -35,9 +25,7 @@ class _SumRestItemQuantityState extends State<SumRestItemQuantity> {
           Text(quantity!.toString()),
           ElevatedButton(
             onPressed: () {
-              setState(() {
-                quantity = quantity! + 1;
-              });
+              onPlusTap();
             },
             child: Icon(Icons.add),
             style: ElevatedButton.styleFrom(
