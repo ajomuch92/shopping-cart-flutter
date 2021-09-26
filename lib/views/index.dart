@@ -48,10 +48,12 @@ class _IndexState extends State<Index> {
           return ListTile(
             title: Text(_product.name!),
             subtitle: Text(_product.toDescription()),
-            leading: SizedBox(
-              height: 50.0,
-              width: 50.0,
-              child: Image.network(_product.urlPhoto!)
+            leading: Hero(
+              tag: 'hero-${_product.id}',
+              child: CircleAvatar(
+                maxRadius: 30,
+                backgroundImage: NetworkImage(_product.urlPhoto!),
+              ),
             ),
             trailing: IconButton(
               color: _product.isAdded!? Colors.redAccent: Colors.green,
