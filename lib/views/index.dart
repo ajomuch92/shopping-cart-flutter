@@ -48,7 +48,6 @@ class _IndexState extends State<Index> {
               child: Image.network(_product.urlPhoto!)
             ),
             trailing: IconButton(
-              splashColor: _product.isAdded!? Colors.redAccent: Colors.green,
               color: _product.isAdded!? Colors.redAccent: Colors.green,
               onPressed: (){
                 if(!_product.isAdded!)

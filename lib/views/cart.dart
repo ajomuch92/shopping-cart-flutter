@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_flutter/models/Product.dart';
+import 'package:shopping_cart_flutter/widgets/sum_rest_item_quantity.dart';
 
 class Cart extends StatefulWidget {
   Cart({Key? key}) : super(key: key);
@@ -32,6 +33,7 @@ class _CartState extends State<Cart> {
           return ListTile(
             title: Text(_product.name!),
             subtitle: Text(_product.toDescription()),
+            trailing: SumRestItemQuantity(quantity: _product.quantity!,),
           );
         }
       ),
