@@ -31,7 +31,13 @@ class _IndexState extends State<Index> {
         title: Text('Shopping Cart'),
         actions: [
           IconButton(onPressed: (){
-            Navigator.pushNamed(context, '/cart', arguments: _products);
+            Navigator.pushNamed(context, '/cart', arguments: _products).then((value) {
+              if (value is List<Product>) {
+                setState(() {
+                  _products = value;
+                });
+              }
+            });
           }, icon: Icon(Icons.shopping_cart))
         ],
       ),
@@ -57,6 +63,9 @@ class _IndexState extends State<Index> {
               }, 
               icon: Icon(_product.isAdded!? Icons.remove_shopping_cart: Icons.add_shopping_cart)
             ),
+            onTap:  () {
+              Navigator.pushNamed(context, '/details', arguments: _product);
+            },
           );
         }
       ),
